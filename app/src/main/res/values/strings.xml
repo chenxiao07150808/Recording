@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Recording</string>
+    <string name="record_title_label">标题</string>
+    <string name="record_title_hint">输入记录标题</string>
+    <string name="record_solved_label">处理</string>
+    <string name="record_details_label">详情</string>
+
+</resources>
