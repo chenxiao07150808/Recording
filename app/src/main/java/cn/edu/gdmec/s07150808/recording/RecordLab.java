@@ -11,6 +11,7 @@ import java.util.UUID;
  */
 public class RecordLab {
     private static RecordLab sRecordLab;
+    /*List<Object> 定义名= new ArrayList<Object>();*/
     private List <Record> mRecords;
     public static RecordLab get(Context context){
         if(sRecordLab==null){
@@ -20,17 +21,24 @@ public class RecordLab {
     }
     private RecordLab(Context context){
         mRecords = new ArrayList<>();
+        for(int i=0 ;i<100;i++){
+            Record record = new Record();
+            record.setTitle("记录 #"+i);
+            record.setSolved(i%2==0);
+            mRecords.add(record);
+        }
 
     }
-    public List<Record> getRecord(){
+    public List<Record> getRecords(){
         return mRecords;
     }
-    public Record getId(UUID id){
+    public Record getRecord(UUID id){
         for(Record record:mRecords){
-            if (record.getid().equals(id)) {
+            if (record.getId().equals(id)) {
                 return record;
             }
         }
         return null;
     }
+
 }

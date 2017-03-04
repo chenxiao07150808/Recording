@@ -16,7 +16,7 @@ public class Record {
         mId=UUID.randomUUID();
         mDate= new Date();
     }
-    public UUID getid(){
+    public UUID getId(){
         return mId;
     }
     public String getTitle(){return mTitile;}

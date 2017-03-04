@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentManager;
 
 import android.os.Bundle;
 
-public class RecordActivity extends FragmentActivity {
+public class RecordActivity extends SingFragmentActivity {
 
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_fragment);
@@ -21,5 +21,9 @@ public class RecordActivity extends FragmentActivity {
             fm.beginTransaction().add(R.id.fragment_container,fragment).commit();
         }
 
+    }*/
+    @Override
+    protected Fragment createFragment(){
+        return new RecordFragment();
     }
 }
