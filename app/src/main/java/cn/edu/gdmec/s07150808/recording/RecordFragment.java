@@ -12,19 +12,31 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import java.util.UUID;
+
 /**
  * Created by chen on 2017/3/2.
  */
 public class RecordFragment extends Fragment{
+          private static final String ARE_RECORD_ID="record_id";
     private Record mRecord;
     private EditText mTitlField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
+    public static RecordFragment newInstance(UUID recordId){
+        Bundle args = new Bundle();
+        args.putSerializable(ARE_RECORD_ID,recordId);
+        RecordFragment fragment =new RecordFragment();
+        fragment.setArguments( args);
+        return  fragment;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRecord = new Record();
-
+       /* mRecord = new Record();*/
+      /*  UUID recordId = (UUID) getActivity().getIntent().getSerializableExtra(RecordActivity.EXTRA_RECORD_ID);*/
+           UUID recordId = (UUID) getArguments().getSerializable(ARE_RECORD_ID);
+           mRecord=RecordLab.get(getActivity()).getRecord(recordId);
 
     }
 
@@ -33,6 +45,7 @@ public class RecordFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_record,container,false);
         mTitlField = (EditText) v.findViewById(R.id.record_title);
+              mTitlField.setText(mRecord.getTitle());
         mTitlField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -53,6 +66,7 @@ public class RecordFragment extends Fragment{
         mDateButton.setText(mRecord.getDate().toString());
         mDateButton.setEnabled(false);
         mSolvedCheckBox = (CheckBox) v.findViewById(R.id.record_solve);
+             mSolvedCheckBox.setChecked(mRecord.isSolved());
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
