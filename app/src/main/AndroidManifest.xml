@@ -7,11 +7,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".RecordActivity" />
+        <activity android:name=".RecordPagerActivity" android:label="@string/app_name"
+            android:parentActivityName=".RecordListActivity"
+            />
         <activity android:name=".RecordListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
