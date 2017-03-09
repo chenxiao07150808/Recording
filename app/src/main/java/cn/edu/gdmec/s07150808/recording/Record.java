@@ -16,7 +16,7 @@ public class Record {
      this(UUID.randomUUID());
     }
     public Record(UUID uuid){
-        mId=UUID.randomUUID();
+        mId=uuid;
         mDate= new Date();
     }
     public UUID getId(){

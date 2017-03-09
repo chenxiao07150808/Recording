@@ -86,8 +86,8 @@ public class RecordLab {
   public static ContentValues getContentValues(Record record){
       ContentValues contentValues = new ContentValues();
       contentValues.put(RecordDbSchema.RecordTable.Cols.UUID,record.getId().toString());
-      contentValues.put(RecordDbSchema.RecordTable.Cols.TITLE,record.getTitle().toString());
-      contentValues.put(RecordDbSchema.RecordTable.Cols.DATE,record.getDate().toString());
+      contentValues.put(RecordDbSchema.RecordTable.Cols.TITLE,record.getTitle());
+      contentValues.put(RecordDbSchema.RecordTable.Cols.DATE,record.getDate().getTime());
       contentValues.put(RecordDbSchema.RecordTable.Cols.SOLVED,record.isSolved()?1:0);
       return contentValues;
   }
