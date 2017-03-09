@@ -161,6 +161,9 @@ public class RecordListFragment extends Fragment{
         public int getItemCount() {
             return mRecords.size();
         }
+        public void setRecords(List<Record> recordList){
+            mRecords =recordList;
+        }
     }
     private void updateUI(){
         RecordLab recordLab =RecordLab.get(getActivity());
@@ -171,9 +174,11 @@ public class RecordListFragment extends Fragment{
             mAdater = new RecordAdapter(records);
             mRecordRecyclerView.setAdapter(mAdater);
         }else{
+            mAdater.setRecords(records);
             mAdater.notifyDataSetChanged();
         }
        updateSubtitle();
 
     }
+
 }
